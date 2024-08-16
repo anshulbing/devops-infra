@@ -6,15 +6,17 @@ provider "aws" {
 
 
 resource "aws_instance" "testEC2" {
-  ami = "ami-0ba9883b710b05ac6"
+  ami = "ami-04a81a99f5ec58529"
   instance_type = "t2.micro"
   key_name = "udemydemokey"
   # security_groups = ["demo-sg"] when launching in a vpc this is not required instead use vpc_sg_id
   vpc_security_group_ids = [aws_security_group.demo-sg.id]
   subnet_id = aws_subnet.dpp-public-subnet-1.id
 
+  for_each = toset(["jenkins-master", "build-slave", "ansible"])
   tags = {
-    Name = "dpp-ec2" }
+    Name = "${each.key}"
+     }
   
 }
 
