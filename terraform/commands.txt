@@ -1,0 +1,2 @@
+>scp -i C:\Users\ANSHTHAK\Downloads\udemypem.pem C:\Users\ANSHTHAK\Downloads\udemydemokey.ppk ubuntu@54.227.104.112:/home/ubuntu/
+udemydemokey.ppk
